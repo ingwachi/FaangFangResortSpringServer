@@ -28,11 +28,17 @@ public class CustomerController {
         return repository.findByPhoneNum(phoneNum);
     }
 
-    @PutMapping("/updateStatus/{phoneNum}")
+    @PutMapping("/updateStatusCus/{phoneNum}")
     public CustomerInfo update(@PathVariable String phoneNum, @RequestBody CustomerInfo customerInfo) {
         CustomerInfo record =  repository.findByPhoneNum(phoneNum);
         record.setStatus(customerInfo.getStatus());
         repository.save(record);
         return record;
+    }
+
+    @DeleteMapping("/deleteCustomerByPhone/{phoneNum}")
+    public String deleteCusByPhone(@PathVariable String phoneNum) {
+        repository.deleteByPhoneNum(phoneNum);
+        return "delete : " + phoneNum;
     }
 }
