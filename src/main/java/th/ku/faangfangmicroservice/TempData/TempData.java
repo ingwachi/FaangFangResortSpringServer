@@ -20,5 +20,5 @@ public class TempData {
     private int reserveD;
     private int reserveE;
     private int reserveF;
-
+    private int dateCount;
 }

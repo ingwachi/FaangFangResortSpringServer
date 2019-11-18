@@ -36,6 +36,14 @@ public class CustomerController {
         return record;
     }
 
+    @PutMapping("/updateDetails/{phoneNum}")
+    public CustomerInfo updateDetails(@PathVariable String phoneNum, @RequestBody CustomerInfo customerInfo) {
+        CustomerInfo record =  repository.findByPhoneNum(phoneNum);
+        record.setDetails(customerInfo.getDetails());
+        repository.save(record);
+        return record;
+    }
+
     @DeleteMapping("/deleteCustomerByPhone/{phoneNum}")
     public String deleteCusByPhone(@PathVariable String phoneNum) {
         repository.deleteByPhoneNum(phoneNum);

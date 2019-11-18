@@ -28,6 +28,13 @@ public class CheckInController {
         return repository.findByPhoneNum(phoneNum);
     }
 
+    @PutMapping("/updateAssignRoom/{phoneNum}")
+    public CheckInInfo updateAssignRoom(@PathVariable String phoneNum, @RequestBody CheckInInfo checkInInfo) {
+        CheckInInfo record =  repository.findByPhoneNum(phoneNum);
+        record.setAssignRoom(checkInInfo.getAssignRoom());
+        repository.save(record);
+        return record;
+    }
     @PutMapping("/updateStatusCheckIn/{phoneNum}")
     public CheckInInfo update(@PathVariable String phoneNum, @RequestBody CheckInInfo checkInInfo) {
         CheckInInfo record =  repository.findByPhoneNum(phoneNum);
