@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "ReceiptInfo")
 public class ReceiptInfo {
 
-    @Id
     private String id;
 
     private String name;

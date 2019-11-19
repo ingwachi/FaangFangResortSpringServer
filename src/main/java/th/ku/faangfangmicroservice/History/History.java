@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document("History")
 public class History {
-    @Id
+
     private String id;
 
     private String name;

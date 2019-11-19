@@ -2,9 +2,11 @@ package th.ku.faangfangmicroservice.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import th.ku.faangfangmicroservice.CustomerInfo.CustomerInfo;
 import th.ku.faangfangmicroservice.Receipt.ReceiptInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class StatusController {
@@ -40,6 +42,15 @@ public class StatusController {
         Status record =  repository.findByPhoneNum(phoneNum);
         record.setStatus(status.getStatus());
         repository.save(record);
+        return record;
+    }
+
+    @PutMapping("/updateStatusRecById/{id}")
+    public Optional<Status> updateById(@PathVariable String id, @RequestBody Status status) {
+        Optional<Status> record =  repository.findById(id);
+        Status st = record.get();
+        st.setStatus(status.getStatus());
+        repository.save(st);
         return record;
     }
 

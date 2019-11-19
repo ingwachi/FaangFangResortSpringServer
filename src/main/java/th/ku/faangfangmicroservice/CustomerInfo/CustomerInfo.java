@@ -8,14 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "CustomerInfo")
 public class CustomerInfo {
 
-    @Id
+
     private String id;
 
     private String name;
     private String phoneNum;
     private String email;
     private String details;
-    private int cost;
+    private float cost;
     private String dateCheckIn;
     private String dateCheckOut;
     private int reserveA;

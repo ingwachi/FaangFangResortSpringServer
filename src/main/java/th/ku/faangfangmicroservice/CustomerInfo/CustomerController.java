@@ -2,9 +2,9 @@ package th.ku.faangfangmicroservice.CustomerInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import th.ku.faangfangmicroservice.AvailableRoom.AvailableRoom;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CustomerController {
@@ -23,6 +23,9 @@ public class CustomerController {
         return repository.findAll();
     }
 
+    @GetMapping("/findCustomerById/{id}")
+    public Optional<CustomerInfo> getOneCustomer(@PathVariable String id) { return repository.findById(id); }
+
     @GetMapping("/findCustomerByPhone/{phoneNum}")
     public CustomerInfo getByPhone(@PathVariable String phoneNum) {
         return repository.findByPhoneNum(phoneNum);
@@ -33,6 +36,15 @@ public class CustomerController {
         CustomerInfo record =  repository.findByPhoneNum(phoneNum);
         record.setStatus(customerInfo.getStatus());
         repository.save(record);
+        return record;
+    }
+
+    @PutMapping("/updateStatusCusById/{id}")
+    public Optional<CustomerInfo> updateById(@PathVariable String id, @RequestBody CustomerInfo customerInfo) {
+        Optional<CustomerInfo> record =  repository.findById(id);
+        CustomerInfo ctm = record.get();
+        ctm.setStatus(customerInfo.getStatus());
+        repository.save(ctm);
         return record;
     }
 
@@ -49,4 +61,11 @@ public class CustomerController {
         repository.deleteByPhoneNum(phoneNum);
         return "delete : " + phoneNum;
     }
+
+    @DeleteMapping("/deleteCustomerById/{id}")
+    public String deleteCusById(@PathVariable String id) {
+        repository.deleteById(id);
+        return "delete : " + id;
+    }
+
 }

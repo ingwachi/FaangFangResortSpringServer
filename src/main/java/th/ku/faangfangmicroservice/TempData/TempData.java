@@ -11,7 +11,7 @@ public class TempData {
     @Id
     private String id;
 
-    private int cost;
+    private float cost;
     private String dateCheckIn;
     private String dateCheckOut;
     private int reserveA;

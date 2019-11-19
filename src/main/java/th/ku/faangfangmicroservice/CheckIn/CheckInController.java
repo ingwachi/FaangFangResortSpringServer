@@ -2,9 +2,11 @@ package th.ku.faangfangmicroservice.CheckIn;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import th.ku.faangfangmicroservice.CustomerInfo.CustomerInfo;
 import th.ku.faangfangmicroservice.Receipt.ReceiptInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CheckInController {
@@ -22,6 +24,9 @@ public class CheckInController {
     public List<CheckInInfo> getAllReceipt() {
         return repository.findAll();
     }
+
+    @GetMapping("/findCheckInInfoById/{id}")
+    public Optional<CheckInInfo> getOneCheckIn(@PathVariable String id) { return repository.findById(id); }
 
     @GetMapping("/findCheckInInfoByPhoneNum/{phoneNum}")
     public CheckInInfo getByDate(@PathVariable String phoneNum) {
@@ -47,5 +52,11 @@ public class CheckInController {
     public String deleteCusByPhone(@PathVariable String phoneNum) {
         repository.deleteByPhoneNum(phoneNum);
         return "delete : " + phoneNum;
+    }
+
+    @DeleteMapping("/deleteCheckInInfoById/{id}")
+    public String deleteCusById(@PathVariable String id) {
+        repository.deleteById(id);
+        return "delete : " + id;
     }
 }

@@ -44,4 +44,10 @@ public class AvailableRoomController {
         repository.deleteById(date);
         return "delete with date: " + date;
     }
+
+    @DeleteMapping("/deleteAllAvailableRoom")
+    public String deleteAllAvailableRoom() {
+        repository.deleteAll();
+        return "delete all room";
+    }
 }

@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("Status")
 public class Status {
 
-    @Id
     private String id;
 
     private String name;

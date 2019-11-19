@@ -3,8 +3,10 @@ package th.ku.faangfangmicroservice.Receipt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import th.ku.faangfangmicroservice.CustomerInfo.CustomerInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ReceiptInfoController {
@@ -36,10 +38,25 @@ public class ReceiptInfoController {
         return record;
     }
 
+    @PutMapping("/updateStatusReceiptById/{id}")
+    public Optional<ReceiptInfo> updateById(@PathVariable String id, @RequestBody ReceiptInfo receiptInfo) {
+        Optional<ReceiptInfo> record =  repository.findById(id);
+        ReceiptInfo rc = record.get();
+        rc.setStatus(receiptInfo.getStatus());
+        repository.save(rc);
+        return record;
+    }
+
     @DeleteMapping("/deleteReceiptInfoByPhone/{phoneNum}")
     public String deleteCusByPhone(@PathVariable String phoneNum) {
         repository.deleteByPhoneNum(phoneNum);
         return "delete : " + phoneNum;
+    }
+
+    @DeleteMapping("/deleteReceiptInfoById/{id}")
+    public String deleteCusById(@PathVariable String id) {
+        repository.deleteById(id);
+        return "delete : " + id;
     }
 
 }

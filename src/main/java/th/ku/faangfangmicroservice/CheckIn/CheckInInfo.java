@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "CheckIn")
 public class CheckInInfo {
 
-    @Id
     private String id;
 
     private String name;
