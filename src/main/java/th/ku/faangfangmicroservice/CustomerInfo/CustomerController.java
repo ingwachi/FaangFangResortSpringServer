@@ -2,6 +2,7 @@ package th.ku.faangfangmicroservice.CustomerInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import th.ku.faangfangmicroservice.CheckIn.CheckInInfo;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,15 @@ public class CustomerController {
         CustomerInfo record =  repository.findByPhoneNum(phoneNum);
         record.setDetails(customerInfo.getDetails());
         repository.save(record);
+        return record;
+    }
+
+    @PutMapping("/updateDetailsById/{id}")
+    public Optional<CustomerInfo> updateAssignRoomById(@PathVariable String id, @RequestBody CustomerInfo customerInfo) {
+        Optional<CustomerInfo> record =  repository.findById(id);
+        CustomerInfo ctm = record.get();
+        ctm.setDetails(customerInfo.getDetails());
+        repository.save(ctm);
         return record;
     }
 

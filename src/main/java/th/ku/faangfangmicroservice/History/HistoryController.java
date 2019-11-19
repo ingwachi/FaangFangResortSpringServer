@@ -36,6 +36,12 @@ public class HistoryController {
         return "delete : " + phoneNum;
     }
 
+    @DeleteMapping("/deleteHistoryInfoById/{id}")
+    public String deleteHistoryById(@PathVariable String id) {
+        repository.deleteById(id);
+        return "delete : " + id;
+    }
+
     @DeleteMapping("/deleteAllHistory")
     public String deleteHistory() {
         repository.deleteAll();

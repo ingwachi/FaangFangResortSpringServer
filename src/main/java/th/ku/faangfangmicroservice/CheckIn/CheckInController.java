@@ -40,6 +40,16 @@ public class CheckInController {
         repository.save(record);
         return record;
     }
+
+    @PutMapping("/updateAssignRoomById/{id}")
+    public Optional<CheckInInfo> updateAssignRoomById(@PathVariable String id, @RequestBody CheckInInfo checkInInfo) {
+        Optional<CheckInInfo> record =  repository.findById(id);
+        CheckInInfo ctm = record.get();
+        ctm.setAssignRoom(checkInInfo.getAssignRoom());
+        repository.save(ctm);
+        return record;
+    }
+
     @PutMapping("/updateStatusCheckIn/{phoneNum}")
     public CheckInInfo update(@PathVariable String phoneNum, @RequestBody CheckInInfo checkInInfo) {
         CheckInInfo record =  repository.findByPhoneNum(phoneNum);

@@ -59,4 +59,10 @@ public class StatusController {
         repository.deleteAll();
         return "delete all history";
     }
+
+    @DeleteMapping("/deleteStatusInfoById/{id}")
+    public String deleteStatusById(@PathVariable String id) {
+        repository.deleteById(id);
+        return "delete : " + id;
+    }
 }
