@@ -17,17 +17,17 @@ public class AvailableRoomController {
     }
 
     @GetMapping("/findAllAvailableRoom")
-    public List<AvailableRoom> getDate() {
+    public List<AvailableRoom> getAllAvailableRoom() {
         return repository.findAll();
     }
 
     @GetMapping("/{date}")
-    public AvailableRoom getByDate(@PathVariable String date) {
+    public AvailableRoom getAvailableRoomByDate(@PathVariable String date) {
         return repository.findByDate(date);
     }
 
     @PutMapping("/updateRoom/{date}")
-    public AvailableRoom update(@PathVariable String date, @RequestBody AvailableRoom availableRoom) {
+    public AvailableRoom updateAvailableRoom(@PathVariable String date, @RequestBody AvailableRoom availableRoom) {
         AvailableRoom record =  repository.findByDate(date);
         record.setTypeA(availableRoom.getTypeA());
         record.setTypeB(availableRoom.getTypeB());
@@ -40,7 +40,7 @@ public class AvailableRoomController {
     }
 
     @DeleteMapping("/{date}")
-    public String deleteBook(@PathVariable String date) {
+    public String deleteAvailableRoom(@PathVariable String date) {
         repository.deleteById(date);
         return "delete with date: " + date;
     }

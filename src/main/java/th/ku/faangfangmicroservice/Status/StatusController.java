@@ -15,7 +15,7 @@ public class StatusController {
     StatusRepository repository;
 
     @PostMapping("/AddStatus")
-    public String saveHistory(@RequestBody Status status) {
+    public String saveStatus(@RequestBody Status status) {
         repository.save(status);
         return "Added Status : " + status.getName();
     }
