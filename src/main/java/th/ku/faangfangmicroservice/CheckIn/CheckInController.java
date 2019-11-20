@@ -15,13 +15,13 @@ public class CheckInController {
     private CheckInRepository repository;
 
     @PostMapping("/AddCheckInInfo")
-    public String saveReceiptInfo(@RequestBody CheckInInfo checkInInfo) {
+    public String saveCheckInInfo(@RequestBody CheckInInfo checkInInfo) {
         repository.save(checkInInfo);
         return "Added CheckIn Info : " + checkInInfo.getName();
     }
 
     @GetMapping("/findAllCheckInInfo")
-    public List<CheckInInfo> getAllReceipt() {
+    public List<CheckInInfo> getAllCheckIn() {
         return repository.findAll();
     }
 

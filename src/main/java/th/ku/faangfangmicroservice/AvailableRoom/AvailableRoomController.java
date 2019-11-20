@@ -39,9 +39,9 @@ public class AvailableRoomController {
         return record;
     }
 
-    @DeleteMapping("/{date}")
+    @DeleteMapping("/deleteByDate/{date}")
     public String deleteAvailableRoom(@PathVariable String date) {
-        repository.deleteById(date);
+        repository.deleteByDate(date);
         return "delete with date: " + date;
     }
 
