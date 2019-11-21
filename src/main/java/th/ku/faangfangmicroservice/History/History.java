@@ -11,6 +11,7 @@ public class History {
     private String id;
 
     private String name;
+    private String email;
     private String phoneNum;
     private String dateCheckIn;
     private String dateCheckOut;

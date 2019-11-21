@@ -2,8 +2,6 @@ package th.ku.faangfangmicroservice.CheckIn;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import th.ku.faangfangmicroservice.CustomerInfo.CustomerInfo;
-import th.ku.faangfangmicroservice.Receipt.ReceiptInfo;
 
 import java.util.List;
 import java.util.Optional;

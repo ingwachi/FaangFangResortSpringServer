@@ -1,14 +1,15 @@
 package th.ku.faangfangmicroservice.CustomerInfo;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import th.ku.faangfangmicroservice.CheckIn.CheckInInfo;
+
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class CustomerController {
+public class CustomerInfoController {
 
     @Autowired
     private CustomerInfoRepository repository;
@@ -24,6 +25,9 @@ public class CustomerController {
         return repository.findAll();
     }
 
+    @GetMapping("/findCustomerByName/{name}")
+    public CustomerInfo getDataByName(@PathVariable String name) { return  repository.findByName(name); }
+
     @GetMapping("/findCustomerById/{id}")
     public Optional<CustomerInfo> getOneCustomer(@PathVariable String id) { return repository.findById(id); }
 
@@ -32,39 +36,22 @@ public class CustomerController {
         return repository.findByPhoneNum(phoneNum);
     }
 
-    @PutMapping("/updateStatusCus/{phoneNum}")
-    public CustomerInfo update(@PathVariable String phoneNum, @RequestBody CustomerInfo customerInfo) {
-        CustomerInfo record =  repository.findByPhoneNum(phoneNum);
-        record.setStatus(customerInfo.getStatus());
+    @PutMapping("/updatePhoneNumCusByName/{name}")
+    public CustomerInfo update(@PathVariable String name, @RequestBody CustomerInfo customerInfo) {
+        CustomerInfo record =  repository.findByName(name);
+        record.setPhoneNum(customerInfo.getPhoneNum());
         repository.save(record);
         return record;
     }
 
-    @PutMapping("/updateStatusCusById/{id}")
-    public Optional<CustomerInfo> updateById(@PathVariable String id, @RequestBody CustomerInfo customerInfo) {
-        Optional<CustomerInfo> record =  repository.findById(id);
-        CustomerInfo ctm = record.get();
-        ctm.setStatus(customerInfo.getStatus());
-        repository.save(ctm);
-        return record;
-    }
-
-    @PutMapping("/updateDetails/{phoneNum}")
-    public CustomerInfo updateDetails(@PathVariable String phoneNum, @RequestBody CustomerInfo customerInfo) {
-        CustomerInfo record =  repository.findByPhoneNum(phoneNum);
-        record.setDetails(customerInfo.getDetails());
+    @PutMapping("/updateEmailCusByName/{name}")
+    public CustomerInfo updateByName(@PathVariable String name, @RequestBody CustomerInfo customerInfo) {
+        CustomerInfo record =  repository.findByName(name);
+        record.setEmail(customerInfo.getEmail());
         repository.save(record);
         return record;
     }
-
-    @PutMapping("/updateDetailsById/{id}")
-    public Optional<CustomerInfo> updateAssignRoomById(@PathVariable String id, @RequestBody CustomerInfo customerInfo) {
-        Optional<CustomerInfo> record =  repository.findById(id);
-        CustomerInfo ctm = record.get();
-        ctm.setDetails(customerInfo.getDetails());
-        repository.save(ctm);
-        return record;
-    }
+    
 
     @DeleteMapping("/deleteCustomerByPhone/{phoneNum}")
     public String deleteCusByPhone(@PathVariable String phoneNum) {
