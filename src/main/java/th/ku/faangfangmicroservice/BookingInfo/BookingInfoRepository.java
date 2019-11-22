@@ -7,4 +7,5 @@ public interface BookingInfoRepository extends MongoRepository<BookingInfo, Stri
     BookingInfo findByPhoneNum(String phoneNum);
     String deleteByPhoneNum(String phoneNum);
     BookingInfo findByName(String name);
+    BookingInfo findByPhoneNumAndId(String phoneNum, String id);
 }

@@ -14,8 +14,14 @@ public class CheckInInfo {
     private String phoneNum;
     private String email;
     private String details;
-    private String dateCheckIn;
+    private String dateCheckin;
     private String dateCheckOut;
     private String status;
     private String assignRoom;
+    private String reserveA;
+    private String reserveB;
+    private String reserveC;
+    private String reserveD;
+    private String reserveE;
+    private String reserveF;
 }

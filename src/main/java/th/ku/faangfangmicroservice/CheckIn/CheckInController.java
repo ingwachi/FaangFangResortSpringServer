@@ -23,6 +23,11 @@ public class CheckInController {
         return repository.findAll();
     }
 
+    @GetMapping("/findAllCheckInInfoByDateCheckin/{dateCheckin}")
+    public List<CheckInInfo> getAllCheckInByDateCheckIn(@PathVariable String dateCheckin) {
+        return repository.findAllByDateCheckin(dateCheckin);
+    }
+
     @GetMapping("/findCheckInInfoById/{id}")
     public Optional<CheckInInfo> getOneCheckIn(@PathVariable String id) { return repository.findById(id); }
 

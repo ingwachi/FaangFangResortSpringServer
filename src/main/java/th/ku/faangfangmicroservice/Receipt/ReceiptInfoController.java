@@ -25,8 +25,13 @@ public class ReceiptInfoController {
     }
 
     @GetMapping("/findReceiptByPhoneNum/{phoneNum}")
-    public ReceiptInfo getByDate(@PathVariable String phoneNum) {
+    public ReceiptInfo getByPhoneNum(@PathVariable String phoneNum) {
         return repository.findByPhoneNum(phoneNum);
+    }
+
+    @GetMapping("/findAllReceiptByCheckin/{dateCheckin}")
+    public List<ReceiptInfo> getByDate(@PathVariable String dateCheckin) {
+        return repository.findAllByDateCheckin(dateCheckin);
     }
 
     @PutMapping("/updateStatusReceipt/{phoneNum}")

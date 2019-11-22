@@ -13,6 +13,7 @@ public class ReceiptInfo {
     private String name;
     private String phoneNum;
     private String datePayment;
+    private String dateCheckin;
     private String timePayment;
     private String price;
     private String url;

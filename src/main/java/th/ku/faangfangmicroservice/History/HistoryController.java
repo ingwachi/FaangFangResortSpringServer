@@ -34,7 +34,8 @@ public class HistoryController {
         return repository.findByPhoneNumAndStatus(phoneNum, status);
     }
 
-
+    @GetMapping("/findHistoryByStatus/{status}")
+    public List<History> getHistoryByStatus(@PathVariable String status) {return  repository.findAllByStatus(status);}
 
     @DeleteMapping("/deleteHistoryInfoByPhone/{phoneNum}")
     public String deleteHistoryByPhone(@PathVariable String phoneNum) {

@@ -28,6 +28,11 @@ public class StatusController {
         return repository.findByPhoneNum(phoneNum);
     }
 
+    @GetMapping("/findStatusByIdAndPhoneNum/{id}/{phoneNum}")
+    public Status getStatusByIdAndPhoneNum(@PathVariable String id, @PathVariable String phoneNum) {
+        return repository.findStatusByIdAndPhoneNum(id, phoneNum);
+    }
+
 
     @DeleteMapping("/deleteStatusInfoByPhone/{phoneNum}")
     public String deleteStatusByPhone(@PathVariable String phoneNum) {

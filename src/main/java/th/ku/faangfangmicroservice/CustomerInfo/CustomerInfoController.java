@@ -51,7 +51,7 @@ public class CustomerInfoController {
         repository.save(record);
         return record;
     }
-    
+
 
     @DeleteMapping("/deleteCustomerByPhone/{phoneNum}")
     public String deleteCusByPhone(@PathVariable String phoneNum) {

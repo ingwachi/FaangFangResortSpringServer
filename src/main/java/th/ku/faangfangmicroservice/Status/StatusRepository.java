@@ -6,4 +6,5 @@ public interface StatusRepository extends MongoRepository<Status, String> {
 
     Status findByPhoneNum(String phoneNum);
     String deleteByPhoneNum(String phoneNum);
+    Status findStatusByIdAndPhoneNum(String id, String phoneNum);
 }

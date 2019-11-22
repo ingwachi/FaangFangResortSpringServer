@@ -34,6 +34,11 @@ public class BookingController {
         return repository.findByPhoneNum(phoneNum);
     }
 
+    @GetMapping("/findBookingInfoByPhoneAndId/{id}/{phoneNum}")
+    public BookingInfo getBookingInfoByPhoneAndId(@PathVariable String id, @PathVariable String phoneNum) {
+        return repository.findByPhoneNumAndId(id, phoneNum);
+    }
+
     @PutMapping("/updateStatusBooking/{phoneNum}")
     public BookingInfo updateStatusBooking(@PathVariable String phoneNum, @RequestBody BookingInfo bookingInfo) {
         BookingInfo record =  repository.findByPhoneNum(phoneNum);

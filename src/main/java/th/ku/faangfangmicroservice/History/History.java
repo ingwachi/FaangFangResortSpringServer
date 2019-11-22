@@ -17,4 +17,10 @@ public class History {
     private String dateCheckOut;
     private String status;
     private String assignRoom;
+    private String reserveA;
+    private String reserveB;
+    private String reserveC;
+    private String reserveD;
+    private String reserveE;
+    private String reserveF;
 }
